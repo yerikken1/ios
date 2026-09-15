@@ -5,3 +5,49 @@ void printMultiplicationTable(int digit) {
     print("$digit * $i = ${digit * i}");
   }
 }
+
+
+// TASK 2
+// next day : examples:
+// 05.09.2026 -> 06.09.2026
+// 28.02.2024 -> 29.02.2024
+// 28.02.2026 -> 01.03.2026
+// 29.02.2026 -> invalid date
+// 28.02.2100 -> 01.03.2100
+// 28.02.2000 -> 29.02.2000
+// 31.12.2025 -> 01.01.2026
+// 2000,2400 leap year
+// 2100,2200,2300 isn`t leap year
+bool isLeapYear(int year) =>
+    year % 4 == 0 && (year % 100 != 0 || year % 400 == 0);
+
+int daysInMonth(int month, int year) {
+  const daysPerMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  if (month == 2 && isLeapYear(year)) return 29;
+  return daysPerMonth[month - 1];
+}
+
+void printNextDay(int day, int month, int year) {
+  if (month < 1  month > 12  day < 1 || day > daysInMonth(month, year)) {
+    print("invalid date");
+    return;
+  }
+
+  int nextDay = day + 1;
+  int nextMonth = month;
+  int nextYear = year;
+
+  if (nextDay > daysInMonth(month, year)) {
+    nextDay = 1;
+    nextMonth++;
+    if (nextMonth > 12) {
+      nextMonth = 1;
+      nextYear++;
+    }
+  }
+
+  String pad(int n) => n.toString().padLeft(2, '0');
+  print(
+    "${pad(day)}.${pad(month)}.$year -> ${pad(nextDay)}.${pad(nextMonth)}.$nextYear",
+  );
+}
