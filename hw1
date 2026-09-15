@@ -91,3 +91,29 @@ bool isPrime(int n) {
   }
   return true;
 }
+
+
+//tests
+void main() {
+  printMultiplicationTable(7);
+
+  printNextDay(5, 9, 2026);
+  printNextDay(28, 2, 2024);
+  printNextDay(28, 2, 2026);
+  printNextDay(29, 2, 2026);
+  printNextDay(28, 2, 2100);
+  printNextDay(28, 2, 2000);
+  printNextDay(31, 12, 2025);
+
+  print(countVowels("flutter mobile development"));
+
+  List<int> numbers = [14, 88, 3, 42, 99, 12, 67];
+  List<int> numbers1 = [234, 34, 123, 44, 949, 112, 67];
+  print(findMinMax(numbers));
+  print(findMinMax(numbers1));
+
+  print(isPrime(3));
+  print(isPrime(6));
+  print(isPrime(137541));
+  print(isPrime(13));
+}
