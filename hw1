@@ -1,0 +1,7 @@
+// TASK 1
+// OUTPUT MULTIPLICATION TABLE 1-10
+void printMultiplicationTable(int digit) {
+  for (int i = 1; i <= 10; i++) {
+    print("$digit * $i = ${digit * i}");
+  }
+}
