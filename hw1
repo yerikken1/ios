@@ -63,3 +63,18 @@ int countVowels(String text) {
   }
   return count;
 }
+
+
+// TASK 4
+// Manual min & max finder
+// [14, 88, 3, 42, 99, 12, 67] -> max: 99, min: 3
+// [234, 34, 123, 44, 949, 112, 67] -> max: 949, min: 34
+String findMinMax(List<int> numbers) {
+  int min = numbers[0];
+  int max = numbers[0];
+  for (int n in numbers) {
+    if (n < min) min = n;
+    if (n > max) max = n;
+  }
+  return "max: $max, min: $min";
+}
