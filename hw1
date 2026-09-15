@@ -51,3 +51,15 @@ void printNextDay(int day, int month, int year) {
     "${pad(day)}.${pad(month)}.$year -> ${pad(nextDay)}.${pad(nextMonth)}.$nextYear",
   );
 }
+
+
+// TASK 3
+// Vowel Counter in a String -> "flutter mobile development" -> 8, actually 9
+int countVowels(String text) {
+  const vowels = "aeiouAEIOU";
+  int count = 0;
+  for (int i = 0; i < text.length; i++) {
+    if (vowels.contains(text[i])) count++;
+  }
+  return count;
+}
