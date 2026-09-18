@@ -40,3 +40,23 @@ class Audiobook extends MediaItem with Downloadable {
     return 'Audiobook: "$title" by Narrator: $narrator | Duration: ${durationHours}hrs | Price: \$${price.toStringAsFixed(2)}';
   }
 }
+
+
+// 2&3.Subclass EBook
+class EBook extends MediaItem with Downloadable {
+  final double fileSizeMB;
+  final String author;
+
+  EBook({
+    required String id,
+    required String title,
+    required double price,
+    required this.fileSizeMB,
+    required this.author,
+  }) : super(id: id, title: title, price: price);
+
+  @override
+  String getDetails() {
+    return 'EBook: "$title" by $author | Size: ${fileSizeMB}MB | Price: \$${price.toStringAsFixed(2)}';
+  }
+}
