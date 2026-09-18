@@ -20,3 +20,23 @@ mixin Downloadable {
     print('Downloading "$title"...');
   }
 }
+
+
+// 2&3.Subclass Audiobook
+class Audiobook extends MediaItem with Downloadable {
+  final double durationHours;
+  final String narrator;
+
+  Audiobook({
+    required String id,
+    required String title,
+    required double price,
+    required this.durationHours,
+    required this.narrator,
+  }) : super(id: id, title: title, price: price);
+
+  @override
+  String getDetails() {
+    return 'Audiobook: "$title" by Narrator: $narrator | Duration: ${durationHours}hrs | Price: \$${price.toStringAsFixed(2)}';
+  }
+}
