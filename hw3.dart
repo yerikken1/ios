@@ -60,3 +60,39 @@ class EBook extends MediaItem with Downloadable {
     return 'EBook: "$title" by $author | Size: ${fileSizeMB}MB | Price: \$${price.toStringAsFixed(2)}';
   }
 }
+
+
+// 4.Class ShoppingCart
+class ShoppingCart {
+  final List<MediaItem> _items = [];
+
+  void addItem(MediaItem item) {
+    _items.add(item);
+  }
+
+  double calculateTotalWithTax({double taxRate = 0.12}) {
+    double subtotal = _items.fold(0.0, (sum, item) => sum + item.price);
+    return subtotal * (1 + taxRate);
+  }
+
+  List<MediaItem> filterByMaxPrice(double maxPrice) {
+    return _items.where((item) => item.price <= maxPrice).toList();
+  }
+
+  void printReceipt() {
+    print('--- SHOPPING CART RECEIPT ---');
+    for (var item in _items) {
+      print(item.getDetails());
+
+      // Explicit cast resolves the compiler check directly
+      if (item is Downloadable) {
+        (item as Downloadable).download(item.title);
+      }
+
+      print('-----------------------------');
+    }
+
+    double total = calculateTotalWithTax();
+    print('Total (incl. 12% tax): \$${total.toStringAsFixed(2)}');
+  }
+}
