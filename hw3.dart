@@ -96,3 +96,30 @@ class ShoppingCart {
     print('Total (incl. 12% tax): \$${total.toStringAsFixed(2)}');
   }
 }
+
+
+// Main execution test
+void main() {
+  var cart = ShoppingCart();
+
+  var book1 = EBook(
+    id: 'e1',
+    title: 'Flutter Deep Dive',
+    price: 19.99,
+    fileSizeMB: 12.5,
+    author: 'Jane Doe',
+  );
+
+  var audio1 = Audiobook(
+    id: 'a1',
+    title: 'Dart Mechanics',
+    price: 29.99,
+    durationHours: 8.5,
+    narrator: 'John Smith',
+  );
+
+  cart.addItem(book1);
+  cart.addItem(audio1);
+
+  cart.printReceipt();
+}
