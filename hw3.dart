@@ -12,3 +12,11 @@ abstract class MediaItem {
 
   String getDetails();
 }
+
+
+// 3.Mixin Downloadable
+mixin Downloadable {
+  void download(String title) {
+    print('Downloading "$title"...');
+  }
+}
