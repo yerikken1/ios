@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const BusinessApp());
-}
+void main() => runApp(const BusinessApp());
 
 class BusinessApp extends StatelessWidget {
   const BusinessApp({super.key});
@@ -11,174 +9,142 @@ class BusinessApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ProfileCardScreen(),
+      home: const ProfileCard(),
     );
   }
 }
 
-class ProfileCardScreen extends StatefulWidget {
-  const ProfileCardScreen({super.key});
+class ProfileCard extends StatefulWidget {
+  const ProfileCard({super.key});
 
   @override
-  State<ProfileCardScreen> createState() => _ProfileCardScreenState();
+  State<ProfileCard> createState() => _ProfileCardState();
 }
 
-class _ProfileCardScreenState extends State<ProfileCardScreen> {
-  bool _isFollowing = false;
-  bool _isLiked = false;
+class _ProfileCardState extends State<ProfileCard> {
+  bool following = false;
+  bool liked = false;
+  int followers = 1320;
+  int likes = 120;
 
-  int _followerCount = 1320;
-  int _likesCount = 120;
+  void follow() {
+    setState(() {
+      following = !following;
+      following ? followers++ : followers--;
+    });
+  }
+
+  void like() {
+    setState(() {
+      liked = !liked;
+      liked ? likes++ : likes--;
+    });
+  }
+
+  void reset() {
+    setState(() {
+      following = false;
+      liked = false;
+      followers = 1320;
+      likes = 120;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[300],
       body: Center(
-        child: Card(
-          elevation: 6,
-          child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                const CircleAvatar(
-                  radius: 40,
-                  backgroundColor: Colors.lime,
-                  child: Icon(
-                    Icons.person,
-                    size: 50,
-                    color: Colors.white,
+        child: Container(
+          width: 390,
+          height: 844,
+          padding: const EdgeInsets.all(25),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(35),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const CircleAvatar(
+                radius: 55,
+                backgroundColor: Colors.lime,
+                child: Icon(
+                  Icons.person,
+                  size: 65,
+                  color: Colors.white,
+                ),
+              ),
+
+              const SizedBox(height: 15),
+
+              const Text(
+                'Aydana Yerkengazina',
+                style: TextStyle(
+                  fontSize: 22,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              const Text(
+                'IT in Business 4th year student',
+                style: TextStyle(color: Colors.grey),
+              ),
+
+              const SizedBox(height: 30),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Text(
+                    '$followers Followers',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  Text(
+                    '$likes Likes ❤️',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ],
+              ),
+
+              const SizedBox(height: 30),
+
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton(
+                  onPressed: follow,
+                  child: Text(
+                    following ? 'Following' : 'Follow',
                   ),
                 ),
+              ),
 
-                const SizedBox(height: 16),
+              const SizedBox(height: 10),
 
-                const Text(
-                  'Aydana Yerkengazina',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
+              SizedBox(
+                width: double.infinity,
+                child: OutlinedButton(
+                  onPressed: like,
+                  child: Text(
+                    liked ? 'Liked ❤️' : 'Like ♡',
                   ),
                 ),
+              ),
 
-                const Text(
-                  'IT in Business 4th year student',
-                  style: TextStyle(color: Colors.grey),
-                ),
+              const SizedBox(height: 10),
 
-                const SizedBox(height: 24),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Column(
-                      children: [
-                        Text(
-                          '$_followerCount',
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const Text('Followers'),
-                      ],
-                    ),
-
-                    Column(
-                      children: [
-                        Text(
-                          '$_likesCount',
-                          style: const TextStyle(
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const Text('Likes ❤️'),
-                      ],
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 24),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    ElevatedButton.icon(
-                      onPressed: _toggleFollow,
-                      icon: Icon(
-                        _isFollowing
-                            ? Icons.check
-                            : Icons.person_add,
-                      ),
-                      label: Text(
-                        _isFollowing ? 'Following' : 'Follow',
-                      ),
-                    ),
-
-                    const SizedBox(width: 10),
-
-                    OutlinedButton.icon(
-                      onPressed: _toggleLike,
-                      icon: Icon(
-                        _isLiked
-                            ? Icons.favorite
-                            : Icons.favorite_border,
-                      ),
-                      label: Text(
-                        _isLiked ? 'Liked' : 'Like',
-                      ),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(height: 12),
-
-                TextButton(
-                  onPressed: _reset,
-                  child: const Text('Reset'),
-                ),
-              ],
-            ),
+              TextButton(
+                onPressed: reset,
+                child: const Text('Reset'),
+              ),
+            ],
           ),
         ),
       ),
     );
-  }
-
-  // Follow / Following
-  void _toggleFollow() {
-    setState(() {
-      _isFollowing = !_isFollowing;
-
-      if (_isFollowing) {
-        _followerCount++;
-      } else {
-        _followerCount--;
-      }
-    });
-  }
-
-  // Like / Unlike
-  void _toggleLike() {
-    setState(() {
-      _isLiked = !_isLiked;
-
-      if (_isLiked) {
-        _likesCount++;
-      } else {
-        _likesCount--;
-      }
-    });
-  }
-
-  // Reset everything
-  void _reset() {
-    setState(() {
-      _isFollowing = false;
-      _isLiked = false;
-      _followerCount = 1320;
-      _likesCount = 120;
-    });
   }
 }
