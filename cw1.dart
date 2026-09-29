@@ -11,7 +11,7 @@ double processOrder({
     price = price * 0.9;
   }
 
-  double fee = deliveryFee ?? 500.0;
+  double fee = deliveryFee ?? 1000.0;
   double total = price + fee;
 
   print(
