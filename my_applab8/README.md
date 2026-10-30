@@ -1,17 +1,9 @@
-# my_applab8
+# Smart Catalog
 
-A new Flutter project.
+Lab 8: a product catalog with list and grid views, pull-to-refresh and
+swipe-to-delete with undo.
 
-## Getting Started
+    flutter run
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Photos are from [Unsplash](https://unsplash.com/license). The Onest font is
+licensed under the SIL Open Font License (`assets/fonts/OFL.txt`).

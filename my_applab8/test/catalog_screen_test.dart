@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:my_applab8/data/product_data.dart';
@@ -23,6 +25,21 @@ double _top(WidgetTester tester, String title) =>
     tester.getTopLeft(find.text(title)).dy;
 
 void main() {
+  test('prices are shown in tenge with grouped thousands', () {
+    expect(seedProducts[2].formattedPrice, '549 990 ₸');
+    expect(seedProducts[9].formattedPrice, '14 990 ₸');
+  });
+
+  test('every product photo exists', () {
+    final products = [
+      ...seedProducts,
+      for (var id = 1; id <= 6; id++) generateProduct(id),
+    ];
+    for (final product in products) {
+      expect(File(product.image).existsSync(), isTrue, reason: product.image);
+    }
+  });
+
   testWidgets('toggles between list and grid', (tester) async {
     await tester.pumpWidget(const SmartCatalogApp());
     expect(find.byType(ListView), findsOneWidget);
@@ -91,7 +108,7 @@ void main() {
 
     await _pullToRefresh(tester);
 
-    final newTitle = find.textContaining('#${seedProducts.length + 1}');
+    final newTitle = find.text(generateProduct(seedProducts.length + 1).title);
     expect(newTitle, findsOneWidget);
     expect(tester.getTopLeft(newTitle).dy, lessThan(_top(tester, _first)));
   });

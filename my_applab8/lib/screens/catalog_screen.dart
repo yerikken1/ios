@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../data/product_data.dart';
 import '../models/product.dart';
+import '../theme/app_colors.dart';
 import '../widgets/dismissible_product.dart';
 import '../widgets/empty_catalog.dart';
 import '../widgets/product_grid_card.dart';
@@ -74,6 +75,10 @@ class _CatalogScreenState extends State<CatalogScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Smart Catalog'),
+        bottom: PreferredSize(
+          preferredSize: const Size.fromHeight(1),
+          child: Container(height: 1, color: AppColors.line),
+        ),
         actions: [
           IconButton(
             tooltip: _isGrid ? 'Show list' : 'Show grid',
@@ -86,6 +91,8 @@ class _CatalogScreenState extends State<CatalogScreen> {
           ? EmptyCatalog(onReset: _resetCatalog)
           : RefreshIndicator(
               onRefresh: _refresh,
+              color: AppColors.accent,
+              backgroundColor: AppColors.card,
               child: _isGrid ? _buildGrid() : _buildList(),
             ),
     );
@@ -97,7 +104,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
       physics: const AlwaysScrollableScrollPhysics(),
       itemCount: _products.length,
       separatorBuilder: (context, index) =>
-          const Divider(height: 1, thickness: 0.5),
+          const Divider(height: 1, thickness: 1, color: AppColors.line),
       itemBuilder: (context, index) {
         final product = _products[index];
         return DismissibleProduct(
@@ -126,6 +133,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
         return DismissibleProduct(
           product: product,
           onDismissed: () => _delete(product),
+          borderRadius: 14,
           child: ProductGridCard(product: product),
         );
       },

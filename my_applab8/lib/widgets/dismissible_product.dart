@@ -6,12 +6,14 @@ class DismissibleProduct extends StatelessWidget {
   final Product product;
   final VoidCallback onDismissed;
   final Widget child;
+  final double borderRadius;
 
   const DismissibleProduct({
     super.key,
     required this.product,
     required this.onDismissed,
     required this.child,
+    this.borderRadius = 0,
   });
 
   @override
@@ -20,9 +22,12 @@ class DismissibleProduct extends StatelessWidget {
       key: ValueKey(product.id),
       direction: DismissDirection.endToStart,
       background: Container(
-        color: Colors.red,
         alignment: Alignment.centerRight,
-        padding: const EdgeInsets.only(right: 20),
+        padding: const EdgeInsets.only(right: 24),
+        decoration: BoxDecoration(
+          color: Colors.red.shade700,
+          borderRadius: BorderRadius.circular(borderRadius),
+        ),
         child: const Icon(Icons.delete, color: Colors.white),
       ),
       onDismissed: (_) => onDismissed(),

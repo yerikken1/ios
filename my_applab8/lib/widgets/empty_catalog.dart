@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../theme/app_colors.dart';
+
 class EmptyCatalog extends StatelessWidget {
   final VoidCallback onReset;
 
@@ -11,22 +13,23 @@ class EmptyCatalog extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(
+          const Icon(
             Icons.inventory_2_outlined,
-            size: 72,
-            color: Theme.of(context).colorScheme.outline,
+            size: 56,
+            color: AppColors.muted,
           ),
           const SizedBox(height: 16),
-          Text(
+          const Text(
             'Catalog is Empty',
-            style: Theme.of(context).textTheme.titleLarge,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
           ),
-          const SizedBox(height: 16),
-          FilledButton.icon(
-            onPressed: onReset,
-            icon: const Icon(Icons.refresh),
-            label: const Text('Reset Catalog'),
+          const SizedBox(height: 6),
+          const Text(
+            'You swiped everything away.',
+            style: TextStyle(fontSize: 14, color: AppColors.muted),
           ),
+          const SizedBox(height: 20),
+          FilledButton(onPressed: onReset, child: const Text('Reset Catalog')),
         ],
       ),
     );

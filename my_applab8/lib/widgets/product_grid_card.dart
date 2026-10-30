@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 
 import '../models/product.dart';
+import '../theme/app_colors.dart';
 import 'category_tag.dart';
 import 'star_rating.dart';
+
+const TextStyle _titleStyle = TextStyle(
+  fontSize: 14,
+  height: 1.25,
+  fontWeight: FontWeight.w600,
+);
 
 class ProductGridCard extends StatelessWidget {
   final Product product;
@@ -11,48 +18,62 @@ class ProductGridCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.zero,
+    return Container(
       clipBehavior: Clip.antiAlias,
+      decoration: BoxDecoration(
+        color: AppColors.card,
+        borderRadius: BorderRadius.circular(14),
+        border: Border.all(color: AppColors.line),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // The image area absorbs whatever height the 0.72 cell has left,
+          // The photo absorbs whatever height the 0.72 cell has left,
           // so the text below can never overflow the card.
           Expanded(
-            child: ColoredBox(
-              color: product.color.withValues(alpha: 0.15),
-              child: Icon(product.icon, size: 48, color: product.color),
+            child: Image.asset(
+              product.image,
+              cacheWidth: 500,
+              fit: BoxFit.cover,
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10),
+            padding: const EdgeInsets.fromLTRB(12, 10, 12, 12),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  product.title,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(fontWeight: FontWeight.w600),
+                // The hidden two-line text keeps every card's photo the same
+                // height, whether the title takes one line or two.
+                Stack(
+                  children: [
+                    const Text('\n', style: _titleStyle),
+                    Text(
+                      product.title,
+                      maxLines: 2,
+                      overflow: TextOverflow.ellipsis,
+                      style: _titleStyle,
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 6),
-                CategoryTag(category: product.category, color: product.color),
                 const SizedBox(height: 6),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    Flexible(child: CategoryTag(category: product.category)),
+                    const SizedBox(width: 6),
                     StarRating(rating: product.rating),
-                    Flexible(
-                      child: Text(
-                        '\$${product.price.toStringAsFixed(2)}',
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
                   ],
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  product.formattedPrice,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.w700,
+                  ),
                 ),
               ],
             ),
