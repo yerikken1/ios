@@ -14,7 +14,7 @@ class SmartCatalogApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Catalog',
+      title: 'Catalog-everything you need!',
       theme: ThemeData(
         fontFamily: 'Onest',
         scaffoldBackgroundColor: AppColors.paper,
