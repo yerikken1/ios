@@ -9,6 +9,7 @@ const TextStyle _titleStyle = TextStyle(
   fontSize: 14,
   height: 1.25,
   fontWeight: FontWeight.w600,
+  color: AppColors.ink,
 );
 
 class ProductGridCard extends StatelessWidget {
@@ -24,6 +25,13 @@ class ProductGridCard extends StatelessWidget {
         color: AppColors.card,
         borderRadius: BorderRadius.circular(14),
         border: Border.all(color: AppColors.line),
+        boxShadow: [
+          BoxShadow(
+            color: AppColors.burgundy.withValues(alpha: 0.10),
+            blurRadius: 10,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -72,7 +80,8 @@ class ProductGridCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   style: const TextStyle(
                     fontSize: 15,
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w800,
+                    color: AppColors.red,
                   ),
                 ),
               ],

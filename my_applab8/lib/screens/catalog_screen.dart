@@ -77,7 +77,7 @@ class _CatalogScreenState extends State<CatalogScreen> {
         title: const Text('Catalog'),
         bottom: PreferredSize(
           preferredSize: const Size.fromHeight(1),
-          child: Container(height: 1, color: AppColors.line),
+          child: Container(height: 1, color: AppColors.burgundyDark),
         ),
         actions: [
           IconButton(

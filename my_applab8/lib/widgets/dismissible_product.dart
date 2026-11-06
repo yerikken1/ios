@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../models/product.dart';
+import '../theme/app_colors.dart';
 
 class DismissibleProduct extends StatelessWidget {
   final Product product;
@@ -25,10 +26,10 @@ class DismissibleProduct extends StatelessWidget {
         alignment: Alignment.centerRight,
         padding: const EdgeInsets.only(right: 24),
         decoration: BoxDecoration(
-          color: Colors.red.shade700,
+          color: AppColors.burgundy,
           borderRadius: BorderRadius.circular(borderRadius),
         ),
-        child: const Icon(Icons.delete, color: Colors.white),
+        child: const Icon(Icons.delete, color: AppColors.white),
       ),
       onDismissed: (_) => onDismissed(),
       child: child,

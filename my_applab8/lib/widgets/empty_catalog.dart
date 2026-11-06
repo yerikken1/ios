@@ -13,15 +13,26 @@ class EmptyCatalog extends StatelessWidget {
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          const Icon(
-            Icons.inventory_2_outlined,
-            size: 56,
-            color: AppColors.muted,
+          Container(
+            padding: const EdgeInsets.all(24),
+            decoration: const BoxDecoration(
+              color: AppColors.redLight,
+              shape: BoxShape.circle,
+            ),
+            child: const Icon(
+              Icons.inventory_2_outlined,
+              size: 56,
+              color: AppColors.burgundy,
+            ),
           ),
           const SizedBox(height: 16),
           const Text(
             'Catalog is Empty',
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.w700),
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w700,
+              color: AppColors.ink,
+            ),
           ),
           const SizedBox(height: 6),
           const Text(

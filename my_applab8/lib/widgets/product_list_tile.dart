@@ -13,7 +13,7 @@ class ProductListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: AppColors.paper,
+      color: AppColors.card,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: Row(
@@ -41,6 +41,7 @@ class ProductListTile extends StatelessWidget {
                       fontSize: 15,
                       height: 1.25,
                       fontWeight: FontWeight.w600,
+                      color: AppColors.ink,
                     ),
                   ),
                   const SizedBox(height: 6),
@@ -58,7 +59,8 @@ class ProductListTile extends StatelessWidget {
                     product.formattedPrice,
                     style: const TextStyle(
                       fontSize: 15,
-                      fontWeight: FontWeight.w700,
+                      fontWeight: FontWeight.w800,
+                      color: AppColors.red,
                     ),
                   ),
                 ],
