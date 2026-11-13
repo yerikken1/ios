@@ -33,7 +33,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     return Scaffold(
       backgroundColor: AppColors.white,
       appBar: AppBar(
-        title: const Text('Product Details'),
+        title: const Text('Product details'),
         actions: [
           IconButton(
             tooltip: 'Share',
@@ -133,7 +133,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                 );
             },
             icon: const Icon(Icons.add_shopping_cart_rounded),
-            label: Text('Add to Cart  •  \$${product.price.toStringAsFixed(2)}'),
+            label: Text('Add to cart  •  \$${product.price.toStringAsFixed(2)}'),
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.red,
               foregroundColor: AppColors.white,

@@ -20,7 +20,7 @@ class CloudProductExplorerApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Cloud Product Explorer',
+      title: 'Product explorer',
       debugShowCheckedModeBanner: false,
       theme: buildAppTheme(),
       home: const ProductListScreen(),

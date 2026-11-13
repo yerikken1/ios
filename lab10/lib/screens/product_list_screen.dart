@@ -52,7 +52,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Cloud Product Explorer'),
+        title: const Text('Product explorer'),
         actions: [
           IconButton(
             tooltip: 'Reload',
@@ -136,7 +136,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             ElevatedButton.icon(
               onPressed: _loadProducts,
               icon: const Icon(Icons.refresh),
-              label: const Text('Retry Connection'),
+              label: const Text('Retry connection'),
               style: ElevatedButton.styleFrom(
                 backgroundColor: AppColors.burgundy,
                 foregroundColor: AppColors.white,

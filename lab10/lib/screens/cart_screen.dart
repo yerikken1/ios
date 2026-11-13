@@ -13,7 +13,7 @@ class CartScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Cart (${cart.itemCount})'),
+        title: Text('My cart (${cart.itemCount})'),
         actions: [
           if (!cart.isEmpty)
             IconButton(
