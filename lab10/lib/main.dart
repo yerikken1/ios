@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
+import 'providers/cart_provider.dart';
 import 'screens/product_list_screen.dart';
 import 'theme/app_colors.dart';
 
 void main() {
-  runApp(const CloudProductExplorerApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => CartProvider(),
+      child: const CloudProductExplorerApp(),
+    ),
+  );
 }
 
 class CloudProductExplorerApp extends StatelessWidget {

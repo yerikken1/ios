@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/product.dart';
 import '../services/product_service.dart';
 import '../theme/app_colors.dart';
+import '../widgets/cart_button.dart';
 import '../widgets/rating_stars.dart';
 import 'product_detail_screen.dart';
 
@@ -58,6 +59,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             icon: const Icon(Icons.refresh),
             onPressed: _state == LoadState.loading ? null : _loadProducts,
           ),
+          const CartButton(),
         ],
       ),
       body: switch (_state) {

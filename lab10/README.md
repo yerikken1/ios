@@ -7,5 +7,6 @@ Flutter app for https://fakestoreapi.com/products.
 - `lib/screens/product_list_screen.dart` — 3 UI states: Loading / Feed (`ListView.separated` + `RefreshIndicator`) / Error with "Retry Connection"
 - `lib/screens/product_detail_screen.dart` — Hero (`product_image_${id}`), `PageView.builder` carousel with "1 / 3" counter and animated dots, category badge, sticky "Add to Cart"
 - `lib/widgets/share_sheet.dart` — bottom sheet with deep link `narxoz://store/product/{id}` and a copy button
+- `lib/providers/cart_provider.dart`, `lib/screens/cart_screen.dart` — cart (Provider): badge in the app bar, quantities, swipe to delete, total and checkout
 
 Offline test: turn on Airplane mode → pull to refresh / restart → error screen → turn off Airplane mode → "Retry Connection".

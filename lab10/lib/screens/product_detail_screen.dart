@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../models/product.dart';
+import '../providers/cart_provider.dart';
+import '../screens/cart_screen.dart';
 import '../theme/app_colors.dart';
+import '../widgets/cart_button.dart';
 import '../widgets/rating_stars.dart';
 import '../widgets/share_sheet.dart';
 
@@ -36,6 +40,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             icon: const Icon(Icons.share_rounded),
             onPressed: () => showShareSheet(context, product),
           ),
+          const CartButton(),
         ],
       ),
       body: ListView(
@@ -111,10 +116,20 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
           ),
           child: ElevatedButton.icon(
             onPressed: () {
+              context.read<CartProvider>().add(product);
               ScaffoldMessenger.of(context)
                 ..hideCurrentSnackBar()
                 ..showSnackBar(
-                  SnackBar(content: Text('"${product.title}" added to cart')),
+                  SnackBar(
+                    content: Text('"${product.title}" added to cart'),
+                    action: SnackBarAction(
+                      label: 'VIEW CART',
+                      textColor: AppColors.redLight,
+                      onPressed: () => Navigator.of(context).push(
+                        MaterialPageRoute(builder: (_) => const CartScreen()),
+                      ),
+                    ),
+                  ),
                 );
             },
             icon: const Icon(Icons.add_shopping_cart_rounded),
