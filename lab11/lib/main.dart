@@ -46,7 +46,7 @@ class _VaultAppState extends State<VaultApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Notes & Settings Vault',
+      title: 'lab11',
       debugShowCheckedModeBanner: false,
       themeMode: _isDark ? ThemeMode.dark : ThemeMode.light,
       theme: ThemeData(
@@ -189,7 +189,7 @@ class _VaultScreenState extends State<VaultScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text('Profile & Settings', style: textTheme.titleMedium),
+                        Text('Profile and Settings', style: textTheme.titleMedium),
                         const SizedBox(height: 12),
                         Row(
                           children: [
